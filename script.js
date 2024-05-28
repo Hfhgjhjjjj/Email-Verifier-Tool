@@ -1,22 +1,17 @@
-function verifyEmail() {
-    var email = document.getElementById('email').value.trim();
-    if (email === '') {
-        alert('Please enter an email.');
-        return;
-    }
+document.getElementById("verificationForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    var email = document.getElementById("emailInput").value;
+    verifyEmail(email);
+});
 
-    // Assuming you're sending an AJAX request to verify_email.php
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'verify_email.php?email=' + encodeURIComponent(email), true);
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-                var result = xhr.responseText;
-                document.getElementById('verificationResult').innerText = result;
-            } else {
-                alert('Error: ' + xhr.statusText);
-            }
-        }
-    };
-    xhr.send();
+function verifyEmail(email) {
+    fetch("verify_email.php?email=" + encodeURIComponent(email))
+        .then(response => response.text())
+        .then(result => {
+            document.getElementById("verificationResult").innerText = result;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById("verificationResult").innerText = "An error occurred. Please try again later.";
+        });
 }
