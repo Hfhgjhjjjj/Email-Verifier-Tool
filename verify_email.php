@@ -7,7 +7,7 @@ function verifyEmail($email) {
     }
     
     // Set your Kickbox API key (replace with your actual API key)
-    $apiKey = $__ENV['live_ea90f011025ff2695d36ae6cfbd8a65859c0f4f84cf864becb9a8ed0e3e54e53']; // Retrieve API key from environment variable
+    $apiKey =  $_ENV['live_ea90f011025ff2695d36ae6cfbd8a65859c0f4f84cf864becb9a8ed0e3e54e53'];  // Retrieve API key from environment variable
     
     if (!$apiKey) {
         return "API key is missing or invalid.";
