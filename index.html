@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email Verifier Tool</title>
+    <title>Email Verification Tool</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Email Verifier Tool</h1>
-        <input type="email" id="email" placeholder="Enter email">
-        <button onclick="verifyEmail()">Verify Email</button>
-        <p id="verificationResult"></p>
-    </div>
+    <h1>Email Verification Tool</h1>
+    <form id="verificationForm">
+        <input type="email" id="emailInput" placeholder="Enter email address" required>
+        <button type="submit">Verify</button>
+    </form>
+    <div id="verificationResult"></div>
     <script src="script.js"></script>
 </body>
 </html>
