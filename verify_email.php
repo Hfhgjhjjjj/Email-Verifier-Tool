@@ -1,6 +1,7 @@
+
 <?php
 // Set your Kickbox API key
-$apiKey = 'your_kickbox_api_key_here';
+$apiKey = 'live_ea90f011025ff2695d36ae6cfbd8a65859c0f4f84cf864becb9a8ed0e3e54e53';
 
 // Function to verify an email address using Kickbox API
 function verifyEmail($email) {
