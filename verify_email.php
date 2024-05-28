@@ -1,11 +1,17 @@
-
 <?php
-// Set your Kickbox API key
-$apiKey = 'live_ea90f011025ff2695d36ae6cfbd8a65859c0f4f84cf864becb9a8ed0e3e54e53';
-
 // Function to verify an email address using Kickbox API
 function verifyEmail($email) {
-    global $apiKey;
+    // Validate email format
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        return "Invalid email address.";
+    }
+    
+    // Set your Kickbox API key (replace with your actual API key)
+    $apiKey = $__ENV['live_ea90f011025ff2695d36ae6cfbd8a65859c0f4f84cf864becb9a8ed0e3e54e53']; // Retrieve API key from environment variable
+    
+    if (!$apiKey) {
+        return "API key is missing or invalid.";
+    }
     
     // API endpoint
     $url = 'https://api.kickbox.com/v2/verify?email=' . urlencode($email) . '&apikey=' . $apiKey;
@@ -25,7 +31,7 @@ function verifyEmail($email) {
     // Execute cURL request
     $response = curl_exec($curl);
     
-    // Check for errors
+    // Check for cURL errors
     if (curl_errno($curl)) {
         $error = curl_error($curl);
         curl_close($curl);
